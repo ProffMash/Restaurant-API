@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.categoryRouter = void 0;
+const hono_1 = require("hono");
+const category_controller_1 = require("./category.controller");
+const bearAuth_1 = require("../middleware/bearAuth");
+exports.categoryRouter = new hono_1.Hono();
+exports.categoryRouter.get("/", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.categoryController);
+exports.categoryRouter.get("/:id", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.getCategory);
+exports.categoryRouter.post("/", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.createCategoryController);
+exports.categoryRouter.put("/:id", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.updateCategoryController);
+exports.categoryRouter.delete("/:id", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.deleteCategoryController);
+exports.categoryRouter.get("/search", bearAuth_1.restaurant_ownerRoleAuth, category_controller_1.searchCategoriesController);

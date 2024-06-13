@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usersRouter = void 0;
+const hono_1 = require("hono");
+const users_controller_1 = require("./users.controller");
+const bearAuth_1 = require("../middleware/bearAuth");
+const bearAuth_2 = require("../middleware/bearAuth");
+exports.usersRouter = new hono_1.Hono();
+exports.usersRouter.get("/", bearAuth_1.adminRoleAuth, users_controller_1.usersController);
+exports.usersRouter.get("/:id", users_controller_1.getUser);
+exports.usersRouter.post("/", users_controller_1.createUserController);
+exports.usersRouter.put("/:id", users_controller_1.updateUserController);
+exports.usersRouter.delete("/:id", bearAuth_2.driverRoleAuth, users_controller_1.deleteUserController);
+exports.usersRouter.get("/search", users_controller_1.searchUsersController);
