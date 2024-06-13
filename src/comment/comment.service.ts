@@ -15,7 +15,12 @@ export const commentService = async (limit?: number) => {
 // Fetch one comment by id
 export const getCommentById = async (id: number) => {
     return await db.query.comment.findFirst({
-        where: eq(comment.id, Number(id))
+        where: eq(comment.id, Number(id)),
+        columns: {
+            comment_text: true,
+            created_at: true,
+            updated_at: true
+        },
     });
 };
 
@@ -40,3 +45,10 @@ export const searchComments = async (searchTerm: string) => {
         where: like(comment.comment_text, `%${searchTerm}%`)
     });
 };
+
+//user getting his comment
+export const getUserComment = async (id: number) => {
+    return await db.query.comment.findMany({
+        where: eq(comment.user_id, id)
+    });
+}

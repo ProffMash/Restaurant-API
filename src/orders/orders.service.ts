@@ -15,7 +15,12 @@ export const ordersService = async (limit?: number) => {
 // Fetch one order by id
 export const getOrderById = async (id: number) => {
     return await db.query.orders.findFirst({
-        where: eq(orders.id, Number(id))
+        where: eq(orders.id, Number(id)),
+        columns: {
+            estimated_delivery_time: true,
+            actual_delivery_time: true,
+            comment: true
+        }
     });
 };
 

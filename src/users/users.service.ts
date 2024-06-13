@@ -2,6 +2,7 @@ import { like, eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import { users } from "../drizzle/schema";
 
+
 // Fetch all users or limited by the given number
 export const userService = async (limit?: number) => {
     if (limit) {
@@ -15,7 +16,11 @@ export const userService = async (limit?: number) => {
 // Fetch one user by id
 export const getUserById = async (id: number) => {
     return await db.query.users.findFirst({
-        where: eq(users.id, Number(id))
+        where: eq(users.id, Number(id)),
+        columns:{
+            name:true,
+            email:true
+        }
     });
 };
 
@@ -40,3 +45,4 @@ export const searchUsers = async (searchTerm: string) => {
         where: like(users.name, `%${searchTerm}%`)
     });
 };
+

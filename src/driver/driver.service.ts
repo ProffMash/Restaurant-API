@@ -1,6 +1,6 @@
 import { like, eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { driver } from "../drizzle/schema";
+import { driver, orders, users } from "../drizzle/schema";
 
 // Fetch all drivers or limited by the given number
 export const driverService = async (limit?: number) => {
@@ -15,7 +15,12 @@ export const driverService = async (limit?: number) => {
 // Fetch one driver by id
 export const getDriverById = async (id: number) => {
     return await db.query.driver.findFirst({
-        where: eq(driver.id, Number(id))
+        where: (eq(driver.id, Number(id))),
+        columns: {
+            car_make: true,
+            car_model: true,
+            car_year: true,
+        },
     });
 };
 
@@ -38,5 +43,16 @@ export const deleteDriver = async (id: number) => {
 export const searchDrivers = async (searchTerm: string) => {
     return await db.query.driver.findMany({
         where: like(driver.id, `%${searchTerm}%`)
+    });
+};
+
+// Fetch one driver by id with related data
+export const getDriverWithDetails = async (id: number) => {
+    return await db.query.driver.findFirst({
+        where: eq(driver.id, id),
+        with: {
+            orders:true,
+            user: true//columns
+        },
     });
 };

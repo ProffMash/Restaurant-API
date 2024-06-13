@@ -8,7 +8,7 @@
 
 GET http://localhost:3000/menu_item/2
 ###
-GET http://localhost:3000/comment
+GET http://localhost:3000/users
 
 ###
 DELETE   http://localhost:3000/orders/1
@@ -22,7 +22,7 @@ GET http://localhost:3000/category
 ###
 GET http://localhost:3000/city/2
 ###
-GET http://localhost:3000/driver
+GET http://localhost:3000/driver/1
 ###
 GET http://localhost:3000/restaurant/1
 ###
@@ -42,15 +42,6 @@ Content-Type: application/json
   "password": "pass"
 }
 
-###updat
-POST http://localhost:3000/address
-Content-Type: application/json
-
-{
-  "id": 4,
-    "user_id": 4
-}
-
 ###
 DELETE http://localhost:3000/restaurant_owner/1
 
@@ -58,8 +49,9 @@ DELETE http://localhost:3000/restaurant_owner/1
 GET http://localhost:3000/driver
 
 
-###Testing
+###GET Category
 GET http://localhost:3000/category
+Authorization: 
 
 Content-Type: application/json
 {
@@ -78,9 +70,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKYXkiLCJyb2xlIjoi
   "name": "Smoothie"
 }
 
-
 ###CITY
-DELETE http://localhost:3000/city/6
+DELETE http://localhost:3000/city/13
+###
+
 ### create a city
 POST http://localhost:3000/city
 Content-Type: application/json
@@ -92,10 +85,12 @@ Content-Type: application/json
 
 ###DELETE Driver
 DELETE http://localhost:3000/driver/1
+Authorization: 
 
-###ADD Driver
+### UPDATE Driver
 PUT http://localhost:3000/driver/1
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaXRheiIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyNzkwNDl9.B612jWopU0oyhfZN1yHfEOT5B26BjSFh41VN14Xz9W0
 
 {
   "car_make": "Toyota",
@@ -128,7 +123,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJEYXZ5Iiwicm9sZSI6
 DELETE http://localhost:3000/restaurant/3
 
 ###
-# Register User (POST)
+# Register
 POST http://localhost:3000/auth/register
 Content-Type: application/json
 
@@ -138,19 +133,19 @@ Content-Type: application/json
   "password": "pass",
   "role": "user"
 }
-###
 
+### Login
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "Antony",
+  "username": "pitaz",
   "password": "pass"
 }
 
 ###Token
-GET http://localhost:3000/comment
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKYXkiLCJyb2xlIjoidXNlciIsImV4cCI6MTcxODE5NTYyOH0.aw-h6VtCw4N4eLJRyh46HpceyY64mg3l8S8d1sa3bNI
+GET http://localhost:3000/users/2
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKYXkiLCJyb2xlIjoidXNlciIsImV4cCI6MTcxODI4NTcyNn0.gPwbnymeAQezS6w2vsIOXUQVV3OV2Tlq-kx0GRK2oYw
 ###
 
 
@@ -170,9 +165,12 @@ Content-Type: application/json
 
 ###
 #get driver
-GET   http://localhost:3000/driver/5
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBbnRvbnkiLCJyb2xlIjoiZHJpdmVyIiwiZXhwIjoxNzE4MjAzNTcxfQ.bKYg_fuoZTTiD6NB0CY5CiFqzgpzRCXQ0Etp8v2tFcs
+GET http://localhost:3000/driver/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaXRheiIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyODcwMzF9.p_3WiACOwsp6GLI6-TNlzQ_ZzdS0GA6HT1fzwtJ4XNQ
 
+###//get comment only from coments ~user
+GET http://localhost:3000/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKYXkiLCJyb2xlIjoidXNlciIsImV4cCI6MTcxODI4NTcyNn0.gPwbnymeAQezS6w2vsIOXUQVV3OV2Tlq-kx0GRK2oYw
 
 
 
