@@ -144,8 +144,8 @@ Content-Type: application/json
 }
 
 ###Token
-GET http://localhost:3000/users/2
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKYXkiLCJyb2xlIjoidXNlciIsImV4cCI6MTcxODI4NTcyNn0.gPwbnymeAQezS6w2vsIOXUQVV3OV2Tlq-kx0GRK2oYw
+GET http://localhost:3000/city/2
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaXRheiIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyOTcxNzR9.eAKKYf9BcGhtGc2fAwGoGTeRTIDXCeL10jVNBI8MXPw
 ###
 
 
